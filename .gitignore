@@ -1,0 +1,22 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Node
+node_modules/
+
+# Angular cache
+**/.angular/
+
+# Environment / secrets
+appsettings.Development.json
+*.env
