@@ -1,0 +1,27 @@
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="todo-form">
+  <input
+    type="text"
+    formControlName="title"
+    placeholder="What needs to be done?"
+    class="todo-input" />
+
+  <input
+    type="text"
+    formControlName="description"
+    placeholder="Description (optional)"
+    class="todo-input" />
+
+  <input
+    type="date"
+    formControlName="dueDate"
+    class="todo-input date-input" />
+
+  <button type="submit" [disabled]="todoForm.invalid" class="add-btn">
+    + Add Todo
+  </button>
+
+  <span class="error"
+    *ngIf="todoForm.get('title')?.invalid && todoForm.get('title')?.touched">
+    Title is required.
+  </span>
+</form>
