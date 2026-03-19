@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="todo-container">
+  <h2>My Todos</h2>
+
+  <app-todo-form (todoCreated)="onTodoCreated($event)"></app-todo-form>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngIf="isLoading" class="loading">Loading todos...</div>
+
+  <div *ngIf="!isLoading && todos.length === 0" class="empty">
+    No todos yet. Add one above! 👆
+  </div>
+
+  <ul class="todo-list" *ngIf="!isLoading && todos.length > 0">
+    <li *ngFor="let todo of todos" class="todo-item" [class.completed]="todo.isCompleted">
+
+      <input
+        type="checkbox"
+        [checked]="todo.isCompleted"
+        (change)="toggleComplete(todo)" />
+
+      <div class="todo-content">
+        <span class="todo-title">{{ todo.title }}</span>
+        <span class="todo-desc" *ngIf="todo.description">{{ todo.description }}</span>
+        <span class="due-date" *ngIf="todo.dueDate">
+          Due: {{ todo.dueDate | date:'mediumDate' }}
+        </span>
+      </div>
+
+      <button class="delete-btn" (click)="deleteTodo(todo.id)">🗑️</button>
+
+    </li>
+  </ul>
+</div>
